@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMark Tattoo Studio | Permanent Art & Tattooing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat & Cinzel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            goldHover: '#B59223',
+                            crimson: '#E63946',
+                            dark: '#0B0C10',
+                            card: '#12141C',
+                            border: '#2A2D3A',
+                            muted: '#9CA3AF'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0C10;
+            color: #E5E7EB;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
+        .bg-mesh {
+            background-image: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+                              radial-gradient(circle at 80% 80%, rgba(230, 57, 70, 0.03) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen flex flex-col justify-between selection:bg-brand-gold selection:text-black">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0B0C10]/90 backdrop-blur-md border-b border-brand-border/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center bg-brand-card group-hover:scale-105 transition-transform">
+                        <span class="font-cinzel text-brand-gold font-bold text-xl">GM</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-cinzel text-lg font-bold tracking-wider text-white group-hover:text-brand-gold transition-colors">GMARK</span>
+                        <span class="text-[10px] tracking-[0.2em] text-brand-muted uppercase -mt-1">Tattoo Studio</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
+                    <a href="#about" class="hover:text-brand-gold transition-colors">Σχετικά</a>
+                    <a href="#styles" class="hover:text-brand-gold transition-colors">Gallery</a>
+                    <a href="#hygiene" class="hover:text-brand-gold transition-colors">Υγιεινή</a>
+                    <a href="#contact" class="hover:text-brand-gold transition-colors">Επικοινωνία & Κρατήσεις</a>
+                    <a href="https://instagram.com/gmark_tattoostudio" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand-gold text-lg transition-colors" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </nav>
+
+                <!-- Book CTA Header Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-black bg-brand-gold hover:bg-brand-goldHover rounded-full transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-gold/10">
+                        Επικοινωνια
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 text-2xl focus:outline-none" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card/95 border-b border-brand-border px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col space-y-4 font-medium text-base">
+                <a href="#about" class="mobile-link text-gray-200 hover:text-brand-gold transition-colors">Σχετικά με εμάς</a>
+                <a href="#styles" class="mobile-link text-gray-200 hover:text-brand-gold transition-colors">Gallery</a>
+                <a href="#hygiene" class="mobile-link text-gray-200 hover:text-brand-gold transition-colors">Πρότυπα Υγιεινής</a>
+                <a href="#contact" class="mobile-link text-gray-200 hover:text-brand-gold transition-colors">Επικοινωνία & Ραντεβού</a>
+                <a href="https://instagram.com/gmark_tattoostudio" target="_blank" rel="noopener" class="mobile-link text-brand-gold flex items-center gap-2">
+                    <i class="fa-brands fa-instagram text-xl"></i> @gmark_tattoostudio
+                </a>
+                <a href="#contact" class="mobile-link block text-center px-5 py-3 text-sm font-semibold uppercase tracking-wider text-black bg-brand-gold rounded-lg mt-2">
+                    Επικοινωνια
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center">
+        <!-- Subtle Overlay Effect -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/40 via-brand-dark to-brand-dark pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-3xl">
+                <!-- Instagram Badge -->
+                <a href="https://instagram.com/gmark_tattoostudio" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-gold/30 bg-brand-card/80 text-xs font-medium text-brand-gold mb-6 hover:border-brand-gold transition-all">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                    <span>@gmark_tattoostudio</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
+                </a>
+
+                <h1 class="font-cinzel text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                    Transforming Stories Into <span class="gold-gradient-text">Permanent Art</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-gray-400 mb-8 max-w-2xl leading-relaxed">
+                    Εξειδικευμένο tattoo studio με έμφαση στη λεπτομέρεια, την απόλυτη υγιεινή και τον μοναδικό σχεδιασμό. Κάθε τατουάζ είναι μια προσωποποιημένη εμπειρία τέχνης πάνω στο δέρμα σας.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                    <a href="#contact" class="px-8 py-4 text-sm font-bold uppercase tracking-wider text-black bg-brand-gold hover:bg-brand-goldHover rounded-lg text-center transition-all shadow-xl shadow-brand-gold/10 hover:shadow-brand-gold/20">
+                        Επικοινωνηστε Μαζι Μας
+                    </a>
+                    <a href="#styles" class="px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white border border-brand-border hover:border-brand-gold/60 bg-brand-card/50 hover:bg-brand-card rounded-lg text-center transition-all">
+                        Δειτε τη Συλλογη
+                    </a>
+                </div>
+
+                <!-- Stats / Highlights -->
+                <div class="mt-12 pt-8 border-t border-brand-border/40 grid grid-cols-3 gap-6 text-center sm:text-left">
+                    <div>
+                        <div class="font-cinzel text-2xl sm:text-3xl font-bold text-white">100%</div>
+                        <div class="text-xs text-brand-muted mt-1">Custom Σχέδια</div>
+                    </div>
+                    <div>
+                        <div class="font-cinzel text-2xl sm:text-3xl font-bold text-white">Sterile</div>
+                        <div class="text-xs text-brand-muted mt-1">Ιατρική Υγιεινή</div>
+                    </div>
+                    <div>
+                        <div class="font-cinzel text-2xl sm:text-3xl font-bold text-white">Fine Line</div>
+                        <div class="text-xs text-brand-muted mt-1">& Realism Focus</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-brand-card/40 border-y border-brand-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Visual Banner -->
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden border border-brand-border bg-neutral-900 relative">
+                        <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=1000&q=80" alt="Tattoo Studio Artist at work" class="w-full h-full object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-brand-gold">GMark Philosophy</span>
+                            <h3 class="font-cinzel text-xl text-white font-bold mt-1">Αφοσίωση στην Τέχνη & τη Λεπτομέρεια</h3>
+                        </div>
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 border-b-2 border-r-2 border-brand-gold/40 rounded-br-2xl pointer-events-none hidden sm:block"></div>
+                </div>
+
+                <!-- Right Text Content -->
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Σχετικα με το Studio</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-2 mb-6">
+                        Δημιουργούμε μοναδικά κομμάτια που αντέχουν στον χρόνο.
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Στο **GMark Tattoo Studio**, η διαδικασία του tattoo δεν είναι απλώς μια εφαρμογή μελανιού, αλλά μια προσωπική συνεργασία. Κάθε ιδέα μετατρέπεται σε ένα πρωτότυπο εικαστικό σχέδιο, προσαρμοσμένο με ακρίβεια στις γραμμές του σώματός σας.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Δίνουμε ιδιαίτερη έμφαση στα καθαρά περίγραμματα, τις ομαλές σκιάσεις και την απόλυτη ασφάλεια κατά τη διάρκεια της συνεδρίας.
+                    </p>
+
+                    <!-- Features List -->
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0 mt-1">
+                                <i class="fa-solid fa-pen-nib text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Προσωποποιημένος Σχεδιασμός (Custom Design)</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">Δεν αντιγράφουμε έτοιμα σχέδια – δημιουργούμε κάτι αποκλειστικά για εσάς.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0 mt-1">
+                                <i class="fa-solid fa-pump-medical text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">100% Αποστειρωμένα & Αναλώσιμα Υλικά</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">Χρήση βελονών μίας χρήσης και κορυφαίων πιστοποιημένων μελανιών.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0 mt-1">
+                                <i class="fa-solid fa-comments text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Δωρεάν Συμβουλευτική Συνεδρία</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">Συζητάμε την ιδέα, την τοποθέτηση και το μέγεθος πριν ξεκινήσουμε.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="styles" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Portfolio</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-2">Δείγματα Εργασιών</h2>
+                <p class="text-gray-400 text-sm mt-3">Πατήστε σε οποιαδήποτε εικόνα για μεγέθυνση.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                
+                <!-- Item 1 -->
+                <div class="gallery-item group relative rounded-xl overflow-hidden border border-brand-border bg-brand-card cursor-pointer gold-border-glow transition-all duration-300" data-title="Dark Ornamental Geometry" data-img="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&w=800&q=80">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&w=800&q=80" alt="Tattoo Sample" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-cinzel font-bold text-lg">Dark Ornamental Geometry</h4>
+                        <p class="text-xs text-gray-300 mt-1">Έντονες αντιθέσεις & γεωμετρικά μοτίβα.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="gallery-item group relative rounded-xl overflow-hidden border border-brand-border bg-brand-card cursor-pointer gold-border-glow transition-all duration-300" data-title="Realistic Lion Portrait" data-img="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=800&q=80">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=800&q=80" alt="Tattoo Sample" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-cinzel font-bold text-lg">Realistic Lion Portrait</h4>
+                        <p class="text-xs text-gray-300 mt-1">Λεπτομερείς σκιάσεις και ρεαλιστικές υφές.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="gallery-item group relative rounded-xl overflow-hidden border border-brand-border bg-brand-card cursor-pointer gold-border-glow transition-all duration-300" data-title="Botanical Fine Line Art" data-img="https://images.unsplash.com/photo-1590246814885-42686a6f3416?auto=format&fit=crop&w=800&q=80">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590246814885-42686a6f3416?auto=format&fit=crop&w=800&q=80" alt="Tattoo Sample" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-cinzel font-bold text-lg">Botanical Fine Line Art</h4>
+                        <p class="text-xs text-gray-300 mt-1">Λεπτές, διακριτικές γραμμές υψηλής ακρίβειας.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="gallery-item group relative rounded-xl overflow-hidden border border-brand-border bg-brand-card cursor-pointer gold-border-glow transition-all duration-300" data-title="Micro Architectural Concept" data-img="https://images.unsplash.com/photo-1568515045052-f9a854d7e167?auto=format&fit=crop&w=800&q=80">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1568515045052-f9a854d7e167?auto=format&fit=crop&w=800&q=80" alt="Tattoo Sample" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-cinzel font-bold text-lg">Micro Architectural Concept</h4>
+                        <p class="text-xs text-gray-300 mt-1">Μεγάλη λεπτομέρεια σε μικρή κλίμακα.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="gallery-item group relative rounded-xl overflow-hidden border border-brand-border bg-brand-card cursor-pointer gold-border-glow transition-all duration-300" data-title="Gothic Calligraphy Script" data-img="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?auto=format&fit=crop&w=800&q=80">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?auto=format&fit=crop&w=800&q=80" alt="Tattoo Sample" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-cinzel font-bold text-lg">Gothic Calligraphy Script</h4>
+                        <p class="text-xs text-gray-300 mt-1">Πρωτότυπη καλλιγραφία σχεδιασμένη στο χέρι.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="gallery-item group relative rounded-xl overflow-hidden border border-brand-border bg-brand-card cursor-pointer gold-border-glow transition-all duration-300" data-title="Mythological Sleeve Design" data-img="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=800&q=80">
+                    <div class="aspect-square w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=800&q=80" alt="Tattoo Sample" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-cinzel font-bold text-lg">Mythological Sleeve Design</h4>
+                        <p class="text-xs text-gray-300 mt-1">Σύνθεση μεγάλου μεγέθους με βαθιές αντιθέσεις.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- More photos CTA -->
+            <div class="mt-12 text-center">
+                <a href="https://instagram.com/gmark_tattoostudio" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black transition-all font-semibold text-xs tracking-wider uppercase">
+                    <i class="fa-brands fa-instagram text-base"></i>
+                    <span>Δειτε περισσοτερα στο Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hygiene & Safety Standards Section -->
+    <section id="hygiene" class="py-16 bg-brand-card/60 border-y border-brand-border/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                
+                <div class="p-6 rounded-2xl bg-brand-dark/80 border border-brand-border/60">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center text-brand-gold text-xl mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-white mb-2">Ιατρική Αποστείρωση</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Ακολουθούμε αυστηρά πρωτόκολλα υγιεινής. Όλα τα εργαλεία αποστειρώνονται σε κλίβανο υψηλής πιέσεως και οι επιφάνειες απολυμαίνονται μετά από κάθε συνεδρία.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-brand-dark/80 border border-brand-border/60">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center text-brand-gold text-xl mb-4">
+                        <i class="fa-solid fa-box-archive"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-white mb-2">Μιας Χρήσεως Βελόνες</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Χρησιμοποιούμε αποκλειστικά σφραγισμένες βελόνες και αναλώσιμα μιας χρήσης που ανοίγονται πάντα μπροστά στον πελάτη.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-brand-dark/80 border border-brand-border/60">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center text-brand-gold text-xl mb-4">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-white mb-2">Πιστοποιημένα Μελάνια</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Εργαζόμαστε μόνο με εγκεκριμένα, vegan & cruelty-free μελάνια που πληρούν τις ευρωπαϊκές προδιαγραφές ασφαλείας (REACH Compliant).
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Contact & Studio Details Section (Form completely removed) -->
+    <section id="contact" class="py-20 bg-brand-card/30 border-t border-brand-border/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Κρατήσεις & Επικοινωνία</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-2">Επικοινωνήστε Μαζί Μας</h2>
+                <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                    Για να προγραμματίσετε το ραντεβού σας ή να συζητήσουμε την ιδέα σας, επικοινωνήστε απευθείας μαζί μας μέσω Instagram ή τηλεφώνου.
+                </p>
+            </div>
+
+            <!-- Prominent Direct Contact Buttons -->
+            <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
+                <!-- Instagram Direct CTA -->
+                <a href="https://ig.me/m/gmark_tattoostudio" target="_blank" rel="noopener" class="group p-8 rounded-2xl border border-pink-500/30 bg-gradient-to-br from-pink-950/30 via-brand-card to-brand-card hover:border-pink-500/70 transition-all text-center flex flex-col items-center justify-center shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 rounded-full bg-pink-500/20 text-pink-400 border border-pink-500/40 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-white mb-2">Instagram Direct</h3>
+                    <p class="text-xs text-gray-400 mb-6">Στείλτε μας φωτογραφίες, διαστάσεις και ιδέες για άμεση απάντηση.</p>
+                    <span class="w-full py-3 px-6 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">
+                        Mηνημα στο Instagram
+                    </span>
+                </a>
+
+                <!-- Phone Call CTA -->
+                <a href="tel:+306900000000" class="group p-8 rounded-2xl border border-brand-gold/30 bg-gradient-to-br from-brand-gold/10 via-brand-card to-brand-card hover:border-brand-gold/70 transition-all text-center flex flex-col items-center justify-center shadow-xl hover:-translate-y-1">
+                    <div class="w-16 h-16 rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/40 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-white mb-2">Τηλεφωνική Κλήση</h3>
+                    <p class="text-xs text-gray-400 mb-6">Καλέστε μας για άμεση ενημέρωση διαθεσιμότητας και ραντεβού.</p>
+                    <span class="w-full py-3 px-6 rounded-lg bg-brand-gold hover:bg-brand-goldHover text-black font-bold text-xs uppercase tracking-wider transition-colors">
+                        Καλεστε Τωρα
+                    </span>
+                </a>
+            </div>
+
+            <!-- Guidelines & Hours Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Guidelines & Studio Rules -->
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Πληροφορίες Studio</span>
+                    <h2 class="font-cinzel text-2xl font-bold text-white mt-1 mb-6">Οδηγίες & Κανόνες</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-brand-card border border-brand-border/60">
+                            <h4 class="text-white font-semibold text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-user-check text-brand-gold"></i>
+                                Όριο Ηλικίας (18+)
+                            </h4>
+                            <p class="text-xs text-gray-400 mt-1">
+                                Τατουάζ πραγματοποιούνται αυστηρά σε άτομα άνω των 18 ετών με επίδειξη αστυνομικής ταυτότητας.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-brand-card border border-brand-border/60">
+                            <h4 class="text-white font-semibold text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-credit-card text-brand-gold"></i>
+                                Προκαταβολή Κράτησης (Deposit)
+                            </h4>
+                            <p class="text-xs text-gray-400 mt-1">
+                                Για την οριστικοποίηση της ημερομηνίας του ραντεβού απαιτείται συμβολική προκαταβολή, η οποία αφαιρείται από το τελικό ποσό.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-brand-card border border-brand-border/60">
+                            <h4 class="text-white font-semibold text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-notes-medical text-brand-gold"></i>
+                                Προετοιμασία & Φροντίδα (Aftercare)
+                            </h4>
+                            <p class="text-xs text-gray-400 mt-1">
+                                Πριν τη συνεδρία φροντίστε να είστε ξεκούραστοι και ενυδατωμένοι. Μετά το πέρας, λαμβάνετε αναλυτικές γραπτές οδηγίες για την επούλωση.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact & Hours Details -->
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Ωράριο & Τοποθεσία</span>
+                        <h2 class="font-cinzel text-2xl font-bold text-white mt-1 mb-6">Ώρες Λειτουργίας</h2>
+
+                        <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-4 mb-6">
+                            <div class="flex items-center justify-between text-xs sm:text-sm border-b border-brand-border/40 pb-3">
+                                <span class="text-gray-400">Δευτέρα - Παρασκευή:</span>
+                                <span class="text-white font-semibold">12:00 - 20:00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs sm:text-sm border-b border-brand-border/40 pb-3">
+                                <span class="text-gray-400">Σάββατο:</span>
+                                <span class="text-white font-semibold">11:00 - 17:00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs sm:text-sm">
+                                <span class="text-gray-400">Κυριακή:</span>
+                                <span class="text-brand-crimson font-semibold">Κλειστά (Μόνο κατόπιν συνεννόησης)</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-instagram text-brand-gold text-lg w-5"></i>
+                                <span>Instagram: <a href="https://instagram.com/gmark_tattoostudio" target="_blank" rel="noopener" class="text-white hover:text-brand-gold underline">@gmark_tattoostudio</a></span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-location-dot text-brand-gold text-lg w-5"></i>
+                                <span>Studio Location: Αθήνα / Κατόπιν Ραντεβού</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-brand-border py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 font-cinzel text-white text-sm">
+                <span class="text-brand-gold font-bold">GM</span> GMark Tattoo Studio
+            </div>
+            <div>
+                © 2026 GMark Tattoo Studio. All rights reserved.
+            </div>
+            <div class="flex gap-4 text-base">
+                <a href="https://instagram.com/gmark_tattoostudio" target="_blank" rel="noopener" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal for Gallery Images -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4 transition-all duration-300">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white text-3xl hover:text-brand-gold focus:outline-none z-10" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-3xl w-full max-h-[90vh] flex flex-col items-center">
+            <img id="lightbox-img" src="" alt="Tattoo Preview" class="max-h-[75vh] w-auto object-contain rounded-lg border border-brand-border shadow-2xl">
+            <div class="mt-4 text-center">
+                <h3 id="lightbox-title" class="font-cinzel text-xl font-bold text-white"></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- Mobile Navigation Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Lightbox Modal Logic ---
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightboxModal = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.getAttribute('data-img');
+                    const title = item.getAttribute('data-title');
+
+                    lightboxImg.src = imgSrc;
+                    lightboxTitle.textContent = title;
+
+                    lightboxModal.classList.remove('hidden');
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+                lightboxModal.classList.add('hidden');
+            });
+
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal) {
+                    lightboxModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
